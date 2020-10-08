@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/confusion/static/css/main.23e744cf.chunk.css",
+    "main.js": "/confusion/static/js/main.ae028595.chunk.js",
+    "main.js.map": "/confusion/static/js/main.ae028595.chunk.js.map",
+    "runtime-main.js": "/confusion/static/js/runtime-main.beb46ec9.js",
+    "runtime-main.js.map": "/confusion/static/js/runtime-main.beb46ec9.js.map",
+    "static/css/2.df694ce1.chunk.css": "/confusion/static/css/2.df694ce1.chunk.css",
+    "static/js/2.781a6588.chunk.js": "/confusion/static/js/2.781a6588.chunk.js",
+    "static/js/2.781a6588.chunk.js.map": "/confusion/static/js/2.781a6588.chunk.js.map",
+    "index.html": "/confusion/index.html",
+    "precache-manifest.dfb5be713bc2641d1053f02d9074ce11.js": "/confusion/precache-manifest.dfb5be713bc2641d1053f02d9074ce11.js",
+    "service-worker.js": "/confusion/service-worker.js",
+    "static/css/2.df694ce1.chunk.css.map": "/confusion/static/css/2.df694ce1.chunk.css.map",
+    "static/css/main.23e744cf.chunk.css.map": "/confusion/static/css/main.23e744cf.chunk.css.map",
+    "static/js/2.781a6588.chunk.js.LICENSE.txt": "/confusion/static/js/2.781a6588.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.min.css": "/confusion/static/media/fontawesome-webfont.fee66e71.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.beb46ec9.js",
+    "static/css/2.df694ce1.chunk.css",
+    "static/js/2.781a6588.chunk.js",
+    "static/css/main.23e744cf.chunk.css",
+    "static/js/main.ae028595.chunk.js"
+  ]
+}
