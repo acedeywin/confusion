@@ -6,16 +6,17 @@ import {
   Label,
   Col,
   Row,
+  Form,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import { Control, LocalForm, Errors } from "react-redux-form";
-
-export const required = (val) => val && val.length;
-export const maxLength = (len) => (val) => !val || val.length <= len;
-export const minLength = (len) => (val) => val && val.length >= len;
-export const isNumber = (val) => !isNaN(Number(val));
-export const validEmail = (val) =>
-  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
+import { Control, Errors, actions } from "react-redux-form";
+import {
+  required,
+  minLength,
+  maxLength,
+  isNumber,
+  validEmail,
+} from "../shared/validators";
 
 class Contact extends React.Component {
   constructor() {
@@ -27,6 +28,7 @@ class Contact extends React.Component {
   handleSubmit(values) {
     console.log(`Current state is : ${JSON.stringify(values)}`);
     alert(`Current state is : ${JSON.stringify(values)}`);
+    this.props.resetFeedbackForm();
   }
 
   render() {
@@ -95,7 +97,10 @@ class Contact extends React.Component {
             `<h3>Send us your Feedback</h3>`
           </div>
           <div className="col-12 col-md-9">
-            <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+            <Form
+              model="feedback"
+              onSubmit={(values) => this.handleSubmit(values)}
+            >
               <Row className="form-group">
                 <Label htmlFor=".firstname" md={2}>
                   First Name
@@ -257,7 +262,7 @@ class Contact extends React.Component {
                   </Button>
                 </Col>
               </Row>
-            </LocalForm>
+            </Form>
           </div>
         </div>
       </div>
