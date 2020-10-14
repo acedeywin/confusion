@@ -4,7 +4,7 @@ export const Comments = (
   state = {
     isLoading: true,
     errMess: null,
-    dishes: [],
+    comments: [],
   },
   action
 ) => {
@@ -22,13 +22,11 @@ export const Comments = (
         ...state,
         isLoading: false,
         errMess: action.payload,
-        dishes: [],
+        comments: [],
       };
 
     case ActionTypes.ADD_COMMENT:
       var comment = action.payload;
-      comment.id = state.comments.length;
-      comment.date = new Date().toISOString();
       return { ...state, comments: state.comments.concat(comment) };
 
     default:
