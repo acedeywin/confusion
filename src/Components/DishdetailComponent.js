@@ -20,6 +20,7 @@ import { Control, LocalForm, Errors } from "react-redux-form";
 import { required, maxLength, minLength } from "../shared/validators";
 import { Loading } from "./LoadingComponent";
 import { baseUrl } from "../shared/baseUrl";
+import { FadeTransform } from "react-animation-components";
 
 class CommentForm extends React.Component {
   constructor() {
@@ -150,13 +151,20 @@ const RenderDish = ({ dish }) => {
   if (dish != null) {
     return (
       <div>
-        <Card>
-          <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
-          <CardBody>
-            <CardTitle>{dish.name}</CardTitle>
-            <CardText>{dish.description}</CardText>
-          </CardBody>
-        </Card>
+        <FadeTransform
+          in
+          transformProps={{
+            exitTransform: "scale(0.5) translateY(-50%)",
+          }}
+        >
+          <Card>
+            <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
+            <CardBody>
+              <CardTitle>{dish.name}</CardTitle>
+              <CardText>{dish.description}</CardText>
+            </CardBody>
+          </Card>
+        </FadeTransform>
       </div>
     );
   } else {
@@ -186,7 +194,8 @@ const RenderComments = ({ comments, postComment, dishId }) => {
   return (
     <div>
       <h4> Comments </h4>
-      <ul className="list-unstyled">{cmnts}</ul>
+      <ul className="list-unstyled"> {cmnts}</ul>
+
       <CommentForm dishId={dishId} postComment={postComment} />
     </div>
   );
