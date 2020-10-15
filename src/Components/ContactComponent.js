@@ -6,10 +6,10 @@ import {
   Label,
   Col,
   Row,
-  Form,
+  Input,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import { Control, Errors, actions } from "react-redux-form";
+import { Control, Errors, actions, LocalForm } from "react-redux-form";
 import {
   required,
   minLength,
@@ -22,13 +22,26 @@ class Contact extends React.Component {
   constructor() {
     super();
 
+    this.state = {
+      agree: false,
+    };
+
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(values) {
-    console.log(`Current state is : ${JSON.stringify(values)}`);
-    alert(`Current state is : ${JSON.stringify(values)}`);
+    alert(`Thank you for your feedback! ${JSON.stringify(values)}`);
     this.props.resetFeedbackForm();
+    this.props.postFeedback(
+      this.props.id,
+      values.firstname,
+      values.lastname,
+      values.telnum,
+      values.email,
+      values.agree,
+      values.contactType,
+      values.message
+    );
   }
 
   render() {
@@ -97,12 +110,9 @@ class Contact extends React.Component {
             `<h3>Send us your Feedback</h3>`
           </div>
           <div className="col-12 col-md-9">
-            <Form
-              model="feedback"
-              onSubmit={(values) => this.handleSubmit(values)}
-            >
+            <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
               <Row className="form-group">
-                <Label htmlFor=".firstname" md={2}>
+                <Label htmlFor="firstname" md={2}>
                   First Name
                 </Label>
                 <Col md={10}>
@@ -110,8 +120,8 @@ class Contact extends React.Component {
                     model=".firstname"
                     id="firstname"
                     name="firstname"
-                    className="form-control"
                     placeholder="First Name"
+                    className="form-control"
                     validators={{
                       required,
                       minLength: minLength(3),
@@ -123,15 +133,15 @@ class Contact extends React.Component {
                     model=".firstname"
                     show="touched"
                     messages={{
-                      required: "Required. ",
-                      minLength: "Must be greater than two characters",
+                      required: "Required",
+                      minLength: "Must be greater than 2 characters",
                       maxLength: "Must be 15 characters or less",
                     }}
                   />
                 </Col>
               </Row>
               <Row className="form-group">
-                <Label htmlFor=".lastname" md={2}>
+                <Label htmlFor="lastname" md={2}>
                   Last Name
                 </Label>
                 <Col md={10}>
@@ -139,8 +149,8 @@ class Contact extends React.Component {
                     model=".lastname"
                     id="lastname"
                     name="lastname"
-                    className="form-control"
                     placeholder="Last Name"
+                    className="form-control"
                     validators={{
                       required,
                       minLength: minLength(3),
@@ -152,15 +162,15 @@ class Contact extends React.Component {
                     model=".lastname"
                     show="touched"
                     messages={{
-                      required: "Required. ",
-                      minLength: "Must be greater than two characters",
+                      required: "Required",
+                      minLength: "Must be greater than 2 characters",
                       maxLength: "Must be 15 characters or less",
                     }}
                   />
                 </Col>
               </Row>
               <Row className="form-group">
-                <Label htmlFor=".telnum" md={2}>
+                <Label htmlFor="telnum" md={2}>
                   Contact Tel.
                 </Label>
                 <Col md={10}>
@@ -168,8 +178,8 @@ class Contact extends React.Component {
                     model=".telnum"
                     id="telnum"
                     name="telnum"
+                    placeholder="Tel. Number"
                     className="form-control"
-                    placeholder="Tel Number"
                     validators={{
                       required,
                       minLength: minLength(3),
@@ -182,8 +192,8 @@ class Contact extends React.Component {
                     model=".telnum"
                     show="touched"
                     messages={{
-                      required: "Required. ",
-                      minLength: "Must be greater than two numbers",
+                      required: "Required",
+                      minLength: "Must be greater than 2 numbers",
                       maxLength: "Must be 15 numbers or less",
                       isNumber: "Must be a number",
                     }}
@@ -191,7 +201,7 @@ class Contact extends React.Component {
                 </Col>
               </Row>
               <Row className="form-group">
-                <Label htmlFor=".email" md={2}>
+                <Label htmlFor="email" md={2}>
                   Email
                 </Label>
                 <Col md={10}>
@@ -211,8 +221,8 @@ class Contact extends React.Component {
                     model=".email"
                     show="touched"
                     messages={{
-                      required: "Required. ",
-                      validEmail: "Invalid email address",
+                      required: "Required",
+                      validEmail: "Invalid Email Address",
                     }}
                   />
                 </Col>
@@ -262,7 +272,7 @@ class Contact extends React.Component {
                   </Button>
                 </Col>
               </Row>
-            </Form>
+            </LocalForm>
           </div>
         </div>
       </div>
