@@ -1,6 +1,5 @@
 import * as ActionTypes from "./ActionTypes";
 import { baseUrl } from "../shared/baseUrl";
-import { InitialFeedback } from "../redux/forms";
 
 //Action creators for addong comments
 export const addComment = (comment) => ({

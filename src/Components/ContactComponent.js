@@ -6,10 +6,9 @@ import {
   Label,
   Col,
   Row,
-  Input,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import { Control, Errors, actions, LocalForm } from "react-redux-form";
+import { Control, Errors, LocalForm } from "react-redux-form";
 import {
   required,
   minLength,
@@ -92,7 +91,7 @@ class Contact extends React.Component {
               >
                 <i className="fa fa-phone"></i> Call
               </a>
-              <a role="button" className="btn btn-info">
+              <a role="button" href="#" className="btn btn-info">
                 <i className="fa fa-skype"></i> Skype
               </a>
               <a
